@@ -946,7 +946,7 @@ GameObject:
   - component: {fileID: 999518425}
   m_Layer: 0
   m_Name: Directional Light
-  m_TagString: Untagged
+  m_TagString: player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1719,6 +1719,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fe4f076c6d02be48b2498f12df4ac10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeValue: 10
   text: {fileID: 979661436}
 --- !u!114 &1681319340
 MonoBehaviour:
@@ -1927,8 +1928,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a853f5d2e7061a583aef729f702cbe4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  b: {fileID: 0}
-  t: {fileID: 0}
+  b: {fileID: 899767084}
+  t: {fileID: 1298019298}
 --- !u!65 &2076178487
 BoxCollider:
   m_ObjectHideFlags: 0
