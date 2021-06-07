@@ -35,7 +35,8 @@ public class PlayerControl : MonoBehaviour
 		int i = 0;
 
     	if (Physics.Raycast(ray, out hit)){
-    		if (hit.transform.gameObject.tag == "turn" || hit.transform.gameObject.tag == "Path"){
+    		if (hit.transform.gameObject.tag == "turn" || hit.transform.gameObject.tag == "Path"
+			|| hit.transform.gameObject.tag == "bot"){
     		    //Debug.Log("path");
     		    directions[i] = dir.back;
     		    arr[i] = hit.transform.position;
@@ -46,7 +47,8 @@ public class PlayerControl : MonoBehaviour
     	}
 
         if (Physics.Raycast(ray1, out hit)){
-        	if (hit.transform.gameObject.tag == "turn" || hit.transform.gameObject.tag == "Path"){
+        	if (hit.transform.gameObject.tag == "turn" || hit.transform.gameObject.tag == "Path"
+			|| hit.transform.gameObject.tag == "bot"){
     		    //Debug.Log("path");
     		    directions[i] = dir.front;
     		    arr[i] = hit.transform.position;
@@ -57,7 +59,8 @@ public class PlayerControl : MonoBehaviour
     	}
 
         if (Physics.Raycast(ray2, out hit)){
-        	if (hit.transform.gameObject.tag == "turn" || hit.transform.gameObject.tag == "Path"){
+        	if (hit.transform.gameObject.tag == "turn" || hit.transform.gameObject.tag == "Path"
+			|| hit.transform.gameObject.tag == "bot"){
     		    //Debug.Log("path");
     		    directions[i] = dir.right;
     		    arr[i] = hit.transform.position;
@@ -68,7 +71,8 @@ public class PlayerControl : MonoBehaviour
         }
 
         if (Physics.Raycast(ray3, out hit)){
-        	if (hit.transform.gameObject.tag == "turn"  || hit.transform.gameObject.tag == "Path"){
+        	if (hit.transform.gameObject.tag == "turn" || hit.transform.gameObject.tag == "Path"
+			|| hit.transform.gameObject.tag == "bot"){
     		    //Debug.Log("path");
     		    directions[i] = dir.left;
     		    arr[i] = hit.transform.position;
@@ -213,6 +217,22 @@ public class PlayerControl : MonoBehaviour
 			GO = collision.gameObject;
 			collision.gameObject.SetActive(false);
 		}	
+
+		if (collision.gameObject.tag == "bot"){
+			timer.playerturn = true;
+            //Debug.Log("llllll");
+
+			this.transform.position = destination;
+
+				//Debug.Log("Collides with Path");
+			destination = this.transform.position;
+			onplace = true;
+			iterator = 0;
+
+			pos = collision.gameObject.transform.position;
+			//GO = collision.gameObject;
+			//collision.gameObject.SetActive(false);
+		}
 		
 		if(this.transform.position.x != pos.x || this.transform.position.z != pos.z && GO != null)
 			GO.SetActive(true);

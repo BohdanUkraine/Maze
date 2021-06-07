@@ -18,6 +18,12 @@ public class New_Game : MonoBehaviour
     }
 
     public void go_to_game(){
+        StrictClass.mode = "Easy";
+        SceneManager.LoadScene("MainGame");
+    }
+
+    public void go_to_game_hard(){
+        StrictClass.mode = "Hard";
         SceneManager.LoadScene("MainGame");
     }
 }

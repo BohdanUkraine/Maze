@@ -35,7 +35,8 @@ public class AIControl : MonoBehaviour
 		int i = 0;
 
     	if (Physics.Raycast(ray, out hit)){
-    		if (hit.transform.gameObject.tag == "turn" || hit.transform.gameObject.tag == "Path"){
+    		if (hit.transform.gameObject.tag == "turn" || hit.transform.gameObject.tag == "Path"
+			|| hit.transform.gameObject.tag == "Player"){
     		    //Debug.Log("path");
     		    directions[i] = dir.back;
     		    arr[i] = hit.transform.position;
@@ -46,7 +47,8 @@ public class AIControl : MonoBehaviour
     	}
 
         if (Physics.Raycast(ray1, out hit)){
-        	if (hit.transform.gameObject.tag == "turn" || hit.transform.gameObject.tag == "Path"){
+        	if (hit.transform.gameObject.tag == "turn" || hit.transform.gameObject.tag == "Path"
+			|| hit.transform.gameObject.tag == "Player"){
     		    //Debug.Log("path");
     		    directions[i] = dir.front;
     		    arr[i] = hit.transform.position;
@@ -57,7 +59,8 @@ public class AIControl : MonoBehaviour
     	}
 
         if (Physics.Raycast(ray2, out hit)){
-        	if (hit.transform.gameObject.tag == "turn" || hit.transform.gameObject.tag == "Path"){
+        	if (hit.transform.gameObject.tag == "turn" || hit.transform.gameObject.tag == "Path"
+			|| hit.transform.gameObject.tag == "Player"){
     		    //Debug.Log("path");
     		    directions[i] = dir.right;
     		    arr[i] = hit.transform.position;
@@ -68,7 +71,8 @@ public class AIControl : MonoBehaviour
         }
 
         if (Physics.Raycast(ray3, out hit)){
-        	if (hit.transform.gameObject.tag == "turn"  || hit.transform.gameObject.tag == "Path"){
+        	if (hit.transform.gameObject.tag == "turn"  || hit.transform.gameObject.tag == "Path"  
+			|| hit.transform.gameObject.tag == "Player"){
     		    //Debug.Log("path");
     		    directions[i] = dir.left;
     		    arr[i] = hit.transform.position;
@@ -100,7 +104,20 @@ public class AIControl : MonoBehaviour
         while(direction[n] != dir.none)
             n++;
 
-        int r = rnd.Next(0, n);
+		int r=0;
+
+		if(StrictClass.mode == "Easy")
+        	r = rnd.Next(0, n);
+		else 
+		if(StrictClass.mode == "Hard"){
+			//TODO: allgorithm for AI
+
+        	r = rnd.Next(0, n);
+
+		}
+
+		Debug.Log(n + " " + r);
+
 		bool k = !timer.playerturn;
 		if (press){
 			i = find(direction, dir.front);
@@ -218,7 +235,23 @@ public class AIControl : MonoBehaviour
 			pos = collision.gameObject.transform.position;
 			GO = collision.gameObject;
 			collision.gameObject.SetActive(false);
-		}	
+		}
+
+		if (collision.gameObject.tag == "Player"){
+			timer.playerturn = true;
+            //Debug.Log("llllll");
+
+			this.transform.position = destination;
+
+				//Debug.Log("Collides with Path");
+			destination = this.transform.position;
+			onplace = true;
+			iterator = 0;
+
+			pos = collision.gameObject.transform.position;
+			//GO = collision.gameObject;
+			//collision.gameObject.SetActive(false);
+		}
 		
 		if(this.transform.position.x != pos.x || this.transform.position.z != pos.z && GO != null)
 			{
