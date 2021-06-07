@@ -61,6 +61,7 @@
      <Compile Include="Assets\MazeGenerator\Scripts\RecursiveMazeGenerator.cs" />
      <Compile Include="Assets\MazeGenerator\Scripts\RecursiveTreeMazeGenerator.cs" />
      <Compile Include="Assets\MazeGenerator\Scripts\RollerBall.cs" />
+     <Compile Include="Assets\MazeGenerator\Scripts\StrictClass.cs" />
      <Compile Include="Assets\MazeGenerator\Scripts\timer.cs" />
      <Compile Include="Assets\MazeGenerator\Scripts\TreeMazeGenerator.cs" />
  <Reference Include="Unity.Timeline.Editor">
